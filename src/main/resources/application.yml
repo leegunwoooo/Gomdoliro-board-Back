@@ -1,1 +1,23 @@
-spring.application.name=human2
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gomdol
+    username: root
+    password:
+
+
+  jpa:
+    database: mysql
+    show-sql: true
+
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type: trace
