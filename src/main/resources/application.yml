@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: ${DB_URL}
-    username: ${DB_NAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:mariadb://svc.sel4.cloudtype.app:30425/gomdol_board
+    username: root
+    password: 1234
 
 
 
