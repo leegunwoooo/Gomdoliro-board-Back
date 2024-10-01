@@ -1,13 +1,14 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/gomdolBoard
-    username: root
-    password:
+    url: jdbc:mariadb://${DB_url}:${DB_port}/{DB_dataBaseName}?characterEncoding=UTF-8&serverTimezone=UTC
+    username: ${DB_name}
+    password: ${DB_password}
 
 
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect  # MySQL Dialect? ??
+
+jpa:
+    database-platform: org.hibernate.dialect.MariaDB103Dialect  # MySQL Dialect? ??
     hibernate:
       ddl-auto: update
     properties:
