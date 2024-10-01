@@ -1,8 +1,8 @@
 package com.example.human2.service;
 
-import com.example.human2.controller.dta.BoardResponse;
-import com.example.human2.controller.dta.SaveBoardRequest;
-import com.example.human2.controller.dta.UpdateBoardRequest;
+import com.example.human2.controller.dto.BoardResponse;
+import com.example.human2.controller.dto.SaveBoardRequest;
+import com.example.human2.controller.dto.UpdateBoardRequest;
 import com.example.human2.domain.Board;
 import com.example.human2.domain.BoardRepository;
 import jakarta.transaction.Transactional;

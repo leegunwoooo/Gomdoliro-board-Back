@@ -1,4 +1,4 @@
-package com.example.human2.controller.dta;
+package com.example.human2.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
