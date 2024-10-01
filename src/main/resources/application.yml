@@ -1,20 +1,17 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://${DB_url}:${DB_port}/{DB_dataBaseName}?characterEncoding=UTF-8&serverTimezone=UTC
-    username: ${DB_name}
-    password: ${DB_password}
+    url: ${DB_URL}
+    username: ${DB_NAME}
+    password: ${DB_PASSWORD}
 
 
 
-jpa:
-    database-platform: org.hibernate.dialect.MariaDB103Dialect  # MySQL Dialect? ??
+  jpa:
+    show-sql: true
+    generate-ddl: true
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate.show_sql: true
-      hibernate.format_sql: true
-      hibernate.use_sql_comments: true
 
 logging:
   level:
