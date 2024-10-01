@@ -1,9 +1,10 @@
 spring:
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver  # MariaDB ???? ??
-    url: jdbc:mariadb://localhost:3306/2human  # MySQL ?????? URL
-    username: root # MySQL ??? ??
-    password:  # MySQL ????
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/gomdolBoard
+    username: root
+    password:
+
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect  # MySQL Dialect? ??
