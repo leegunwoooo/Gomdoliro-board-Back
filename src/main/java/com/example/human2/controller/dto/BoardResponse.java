@@ -4,6 +4,7 @@ import com.example.human2.domain.Board;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+
 @Getter
 @AllArgsConstructor
 public class BoardResponse {
