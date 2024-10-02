@@ -21,11 +21,3 @@ logging:
       hibernate:
         SQL: debug
         type: trace
-
-mvc:
-  cors:
-    mappings:
-      "/**":  # ?? ??? ?? CORS ??
-        allowed-origins: "*"  # ?? ?? ??
-        allowed-methods: "GET,POST,PUT,DELETE"  # ??? HTTP ???
-        allow-credentials: true  # ?? ?? ??
