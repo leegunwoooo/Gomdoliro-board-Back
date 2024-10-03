@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.hibernate.orm:hibernate-core:6.2.7.Final' // Hibernate 6.x
     implementation 'org.projectlombok:lombok' // Lombok
     annotationProcessor 'org.projectlombok:lombok' // Lombok Annotation Processor
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
