@@ -25,6 +25,7 @@ dependencies {
     implementation 'org.projectlombok:lombok' // Lombok
     annotationProcessor 'org.projectlombok:lombok' // Lombok Annotation Processor
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
 tasks.named('test') {

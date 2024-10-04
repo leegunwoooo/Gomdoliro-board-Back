@@ -17,9 +17,6 @@ class Human2ApplicationTests {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
-    void contextLoads() {
-    }
 
     @Test
     public void testSaveBoard() throws Exception {
