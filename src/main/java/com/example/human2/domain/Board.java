@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name = "human2")
+@Table(name = "2human")
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class Board {
 
     private String title;
 
-    @Column(length = 5000)
+    @Lob//256자 이상 되도록 하느 어노테이션
     private String content;
 
     @Builder
