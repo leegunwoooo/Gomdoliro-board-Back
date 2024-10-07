@@ -13,12 +13,12 @@ public class BoardResponse {
     private Long id;
     private String title;
     private String content;
-    private LocalDate createDate;
+    private LocalDate date;
 
     public BoardResponse(Board board) {
         this.id = board.getId();
         this.title = board.getTitle();
         this.content = board.getContent();
-        this.createDate = board.getDate();
+        this.date = board.getDate();
     }
 }
