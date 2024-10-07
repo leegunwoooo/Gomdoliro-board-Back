@@ -16,7 +16,7 @@ public class Board {
 
     private String title;
 
-    @Lob//256자 이상 되도록 하느 어노테이션
+    @Column(length = 50000)
     private String content;
 
     @Builder
