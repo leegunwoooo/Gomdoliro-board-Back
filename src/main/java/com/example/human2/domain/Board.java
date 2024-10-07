@@ -16,7 +16,7 @@ public class Board {
 
     private String title;
 
-    @Column(length = 50000)
+    @Column(length = 5000)
     private String content;
 
     @Builder
