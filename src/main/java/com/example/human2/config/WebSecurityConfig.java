@@ -23,7 +23,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize // 권한 설정
-                        .requestMatchers("/login", "/signup", "/user").permitAll() // 누구나 접근 허용
+                        .requestMatchers("/login", "/signup", "/user", "board-all").permitAll() // 누구나 접근 허용
                 )
                 .formLogin((formLogin) -> formLogin // 폼 기반 로그인 설정
                         .loginPage("/login") // 사용자 정의 로그인 페이지
