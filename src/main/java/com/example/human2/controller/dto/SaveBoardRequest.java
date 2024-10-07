@@ -11,5 +11,4 @@ import java.time.LocalDateTime;
 public class SaveBoardRequest {
     private String title;
     private String content;
-    private LocalDate createDate;
 }
