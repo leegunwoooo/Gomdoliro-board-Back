@@ -19,6 +19,6 @@ public class BoardResponse {
         this.id = board.getId();
         this.title = board.getTitle();
         this.content = board.getContent();
-        this.createDate = board.getCreateDate();
+        this.createDate = board.getDate();
     }
 }
