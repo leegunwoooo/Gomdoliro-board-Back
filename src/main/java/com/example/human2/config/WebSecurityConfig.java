@@ -23,7 +23,6 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/login", "/signup", "/board-all").permitAll() // 로그인과 회원가입은 누구나 접근 가능
                         .anyRequest().permitAll() // 나머지 페이지는 인증 없이 접근 가능
                 );
 

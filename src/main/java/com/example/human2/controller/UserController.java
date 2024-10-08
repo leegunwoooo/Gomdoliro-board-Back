@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RequiredArgsConstructor
 @RestController
 public class UserController {
@@ -20,15 +23,19 @@ public class UserController {
     private final AuthenticationManager authenticationManager; // AuthenticationManager 주입
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody UserDto infoDto) { // 회원 추가
+    public ResponseEntity<Map<String, String>> signup(@RequestBody UserDto infoDto) { // 회원 추가
         userService.save(infoDto);
-        return ResponseEntity.ok("1");
+        Map<String, String> response = new HashMap<>();
+        response.put("success", "1");  // 필드명을 "success"로 변경
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/signup-name")
-    public ResponseEntity<String> name(@RequestBody UserDto userDto) {
+    public ResponseEntity<Map<String, String>> name(@RequestBody UserDto userDto) {
         userService.saveName(userDto);  // 2단계 닉네임 저장
-        return ResponseEntity.ok("1");
+        Map<String, String> response = new HashMap<>();
+        response.put("success", "1");  // 필드명을 "success"로 변경
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/login") // /login 경로로 들어오는 POST 요청을 처리
@@ -43,10 +50,14 @@ public class UserController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             // 로그인 성공 시 JSON 응답
-            return ResponseEntity.ok("1");
+            Map<String, String> response = new HashMap<>();
+            response.put("success", "1");  // 필드명을 "success"로 변경
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             // 인증 실패 시 401 상태 코드와 함께 실패 메시지 반환
-            return ResponseEntity.status(401).body("0");
+            Map<String, String> response = new HashMap<>();
+            response.put("success", "0");  // 실패 시 "success"를 "0"으로
+            return ResponseEntity.status(401).body(response);
         }
     }
 }
