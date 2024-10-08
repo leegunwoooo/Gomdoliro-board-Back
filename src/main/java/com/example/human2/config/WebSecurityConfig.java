@@ -24,7 +24,6 @@ public class WebSecurityConfig {
                 )
                 .formLogin((formLogin) -> formLogin
                         .loginPage("/login") // 사용자 정의 로그인 페이지
-                        .defaultSuccessUrl("/board-all", true) // 로그인 성공 시 이동할 페이지
                 )
                 .logout((logout) -> logout
                         .logoutSuccessUrl("/login") // 로그아웃 성공 후 이동할 페이지
