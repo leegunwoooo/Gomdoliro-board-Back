@@ -1,5 +1,6 @@
-package com.example.human2.controller.dto;
+package com.example.human2.controller;
 
+import com.example.human2.controller.dto.UserDto;
 import com.example.human2.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
