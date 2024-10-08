@@ -24,7 +24,8 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((authorize) -> authorize
                         .anyRequest().permitAll() // 나머지 페이지는 인증 없이 접근 가능
-                );
+                )
+                .csrf(csrf -> csrf.disable());
 
         return http.build();
     }
