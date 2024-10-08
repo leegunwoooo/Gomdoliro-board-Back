@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 @NoArgsConstructor
@@ -23,8 +22,14 @@ public class User implements UserDetails {
 
     private String password;
 
-    public String getUsername() {
+    private String nickName;
+
+    public String getUseremail() {
         return email;
+    }
+
+    public String getUsername(){
+        return nickName;
     }
 
     public String getPassword(){
@@ -40,5 +45,9 @@ public class User implements UserDetails {
     public User(String email, String password){
         this.email = email;
         this.password = password;
+    }
+
+    public void setNickname(String nickName) {
+        this.nickName = nickName;
     }
 }
