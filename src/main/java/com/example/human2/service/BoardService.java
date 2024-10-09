@@ -30,7 +30,7 @@ public class BoardService {
         Board board = Board.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
-                .nickname(user.getNickName()) // 닉네임 설정
+                .nickname(user.getUsername()) // 닉네임 설정
                 .build();
 
         Board save = boardRepository.save(board);
