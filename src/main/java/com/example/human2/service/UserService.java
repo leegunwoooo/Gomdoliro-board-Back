@@ -35,33 +35,10 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user).getId(); // 저장된 사용자 정보의 Id 반환
     }
 
-    /*public String updateName(UserDto userDto) {
-        User user = userRepository.findByEmail(userDto.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("회원 정보를 찾을 수 없습니다."));
-        user.setNickname(userDto.getNickName());  // 닉네임 설정
-        userRepository.save(user); // 한 번만 호출
-        return user.getNickName(); // 저장된 사용자로부터 닉네임 반환
-    }*/
-    /*public String updateName(HttpServletRequest request, UserDto userDto) {
-        HttpSession session = request.getSession();
-        String email = (String) session.getAttribute("email");
-
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("회원 정보를 찾을 수 없습니다."));
-
-        user.setNickname(userDto.getNickName());
-        userRepository.save(user);
-
-        return user.getNickName();
-    }*/
     public void updateName(String email, String nickname) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("회원 정보를 찾을 수 없습니다."));
         user.setNickname(nickname); // 닉네임 설정
         userRepository.save(user); // 저장
     }
-
-
-
-
 }
