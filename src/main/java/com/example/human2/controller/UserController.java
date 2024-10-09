@@ -31,13 +31,24 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-   @PatchMapping("/signup-name")
+   /*@PatchMapping("/signup-name")
     public ResponseEntity<Map<String, String>> name(@RequestBody UserDto userDto) {
         userService.updateName(userDto);  // 2단계 닉네임 저장
         Map<String, String> response = new HashMap<>();
         response.put("success", "1");  // 필드명을 "success"로 변경
         return ResponseEntity.ok(response);
-    }
+    }*/
+   @PatchMapping("/signup-name")
+   public ResponseEntity<Map<String, String>> updateName(@RequestBody Map<String, String> request) {
+       String email = SecurityContextHolder.getContext().getAuthentication().getName(); // 인증된 사용자의 이메일 가져오기
+       String nickname = request.get("nickName"); // 요청에서 닉네임 추출
+       userService.updateName(email, nickname);  // 닉네임 저장
+       Map<String, String> response = new HashMap<>();
+       response.put("success", "1");
+       return ResponseEntity.ok(response);
+   }
+
+
 
     @PostMapping("/login") // /login 경로로 들어오는 POST 요청을 처리
     public ResponseEntity<?> login(@RequestBody UserDto userDto) { // 요청 본문에서 UserDto 객체를 받음
