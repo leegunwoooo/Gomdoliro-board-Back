@@ -42,7 +42,7 @@ public class UserService implements UserDetailsService {
         userRepository.save(user); // 한 번만 호출
         return user.getNickName(); // 저장된 사용자로부터 닉네임 반환
     }*/
-    public String updateName(HttpServletRequest request, UserDto userDto) {
+    /*public String updateName(HttpServletRequest request, UserDto userDto) {
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
 
@@ -53,7 +53,14 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
 
         return user.getNickName();
+    }*/
+    public void updateName(String email, String nickname) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("회원 정보를 찾을 수 없습니다."));
+        user.setNickname(nickname); // 닉네임 설정
+        userRepository.save(user); // 저장
     }
+
 
 
 
