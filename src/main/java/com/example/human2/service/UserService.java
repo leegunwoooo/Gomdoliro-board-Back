@@ -33,10 +33,12 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user).getId(); // 저장된 사용자 정보의 Id 반환
     }
 
-    public void saveName(UserDto userDto) {
+    public String saveName(UserDto userDto) {
         User user = userRepository.findByEmail(userDto.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("회원 정보를 찾을 수 없습니다."));
         user.setNickname(userDto.getNickName());  // 닉네임 설정
-        userRepository.save(user);
+        userRepository.save(user); // 한 번만 호출
+        return user.getNickName(); // 저장된 사용자로부터 닉네임 반환
     }
+
 }

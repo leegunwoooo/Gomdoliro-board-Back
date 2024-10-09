@@ -30,13 +30,20 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/signup-name")
+   /* @PostMapping("/signup-name")
     public ResponseEntity<Map<String, String>> name(@RequestBody UserDto userDto) {
         userService.saveName(userDto);  // 2단계 닉네임 저장
         Map<String, String> response = new HashMap<>();
         response.put("success", "1");  // 필드명을 "success"로 변경
         return ResponseEntity.ok(response);
-    }
+    }*/
+   @PostMapping("/signup-name")
+   public ResponseEntity<Map<String, String>> saveNickname(@RequestBody UserDto userDto) {
+       userService.saveName(userDto);  // 닉네임 저장
+       Map<String, String> response = new HashMap<>();
+       response.put("message", "닉네임 설정 완료.");
+       return ResponseEntity.ok(response);
+   }
 
     @PostMapping("/login") // /login 경로로 들어오는 POST 요청을 처리
     public ResponseEntity<?> login(@RequestBody UserDto userDto) { // 요청 본문에서 UserDto 객체를 받음
