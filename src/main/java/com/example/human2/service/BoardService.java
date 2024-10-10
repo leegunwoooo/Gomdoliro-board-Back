@@ -8,6 +8,7 @@ import com.example.human2.domain.BoardRepository;
 import com.example.human2.domain.User;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import com.example.human2.domain.UserRepository;
@@ -24,12 +25,14 @@ public class BoardService {
 
 
     public BoardResponse save(SaveBoardRequest request) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = (User) authentication.getPrincipal();
 
         Board board = Board.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
-                .writer(user.getNickName())
+                .writer(user.getUsername())
                 .build();
 
         Board save = boardRepository.save(board);
