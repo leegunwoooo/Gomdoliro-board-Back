@@ -14,11 +14,13 @@ public class BoardResponse {
     private String title;
     private String content;
     private LocalDate date;
+    private String writer;
 
     public BoardResponse(Board board) {
         this.id = board.getId();
         this.title = board.getTitle();
         this.content = board.getContent();
         this.date = board.getDate();
+        this.writer = board.getWriter();
     }
 }

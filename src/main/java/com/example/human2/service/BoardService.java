@@ -20,13 +20,16 @@ import java.util.List;
 public class BoardService {
 
     private final BoardRepository boardRepository;
-    
+    private final UserRepository userRepository;
+
 
     public BoardResponse save(SaveBoardRequest request) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Board board = Board.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
+                .writer(user.getNickName())
                 .build();
 
         Board save = boardRepository.save(board);
