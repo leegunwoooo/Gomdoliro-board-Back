@@ -20,17 +20,13 @@ import java.util.List;
 public class BoardService {
 
     private final BoardRepository boardRepository;
-    private final UserRepository userRepository;
+    
 
     public BoardResponse save(SaveBoardRequest request) {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName(); // 로그인한 사용자의 이메일 가져오기
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new IllegalArgumentException("User not found")); // 사용자 정보 가져오기
 
         Board board = Board.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
-                .nickname(user.getUsername()) // 닉네임 설정
                 .build();
 
         Board save = boardRepository.save(board);
