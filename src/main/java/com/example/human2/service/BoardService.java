@@ -25,14 +25,11 @@ public class BoardService {
 
 
     public BoardResponse save(SaveBoardRequest request) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        User user = (User) authentication.getPrincipal();
 
         Board board = Board.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
-                .writer(user.getUsername())
+                .writer(request.getWriter())
                 .build();
 
         Board save = boardRepository.save(board);
