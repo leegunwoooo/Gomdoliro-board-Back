@@ -23,6 +23,11 @@ public class UserService implements UserDetailsService {
     }
 
     public Long save(UserDto userDto) {
+
+        if (userRepository.findByEmail(userDto.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
+        }
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode(userDto.getPassword()); // 암호화된 비밀번호 저장
 
