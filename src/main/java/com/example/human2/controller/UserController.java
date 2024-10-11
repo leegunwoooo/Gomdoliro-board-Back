@@ -1,6 +1,7 @@
 package com.example.human2.controller;
 
 import com.example.human2.controller.dto.UserDto;
+import com.example.human2.domain.User;
 import com.example.human2.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -54,9 +55,12 @@ public class UserController {
             // 인증 정보가 성공적으로 설정되면 SecurityContext에 저장
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
+            User user = (User) authentication.getPrincipal();
+
             // 로그인 성공 시 JSON 응답
             Map<String, String> response = new HashMap<>();
             response.put("success", "1");  // 필드명을 "success"로 변경
+            response.put("nickname", user.getUsername());
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             // 인증 실패 시 401 상태 코드와 함께 실패 메시지 반환

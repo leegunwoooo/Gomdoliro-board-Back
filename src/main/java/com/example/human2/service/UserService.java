@@ -43,6 +43,9 @@ public class UserService implements UserDetailsService {
     public void updateName(String email, String nickname) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("회원 정보를 찾을 수 없습니다."));
+        if(userRepository.findByNickName(nickname).isPresent()) {
+            throw new IllegalArgumentException("이미 존재하는 닉네임입니다.");
+        }
         user.setNickname(nickname); // 닉네임 설정
         userRepository.save(user); // 저장
     }
