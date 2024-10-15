@@ -1,4 +1,4 @@
-package com.example.human2.controller.dto;
+package com.example.human2.controller.dto.User;
 
 import lombok.Getter;
 import lombok.Setter;

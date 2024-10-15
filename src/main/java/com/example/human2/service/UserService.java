@@ -1,10 +1,8 @@
 package com.example.human2.service;
 
-import com.example.human2.controller.dto.UserDto;
+import com.example.human2.controller.dto.User.UserDto;
 import com.example.human2.domain.User;
 import com.example.human2.domain.UserRepository;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

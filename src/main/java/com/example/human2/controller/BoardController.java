@@ -1,8 +1,8 @@
 package com.example.human2.controller;
 
-import com.example.human2.controller.dto.BoardResponse;
-import com.example.human2.controller.dto.SaveBoardRequest;
-import com.example.human2.controller.dto.UpdateBoardRequest;
+import com.example.human2.controller.dto.Board.BoardResponse;
+import com.example.human2.controller.dto.Board.SaveBoardRequest;
+import com.example.human2.controller.dto.Board.UpdateBoardRequest;
 import com.example.human2.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

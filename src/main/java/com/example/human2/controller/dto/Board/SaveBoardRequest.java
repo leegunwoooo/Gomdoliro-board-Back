@@ -1,10 +1,6 @@
-package com.example.human2.controller.dto;
-import com.example.human2.domain.Board;
+package com.example.human2.controller.dto.Board;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
