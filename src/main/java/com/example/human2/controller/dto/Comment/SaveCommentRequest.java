@@ -6,4 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class SaveCommentRequest {
+    private String commentContent;
+    private String commentWriter;
 }

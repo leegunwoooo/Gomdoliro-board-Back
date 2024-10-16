@@ -6,4 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class UpdateCommentRequest {
+    private Long id;
+    private String commentContent;
 }
