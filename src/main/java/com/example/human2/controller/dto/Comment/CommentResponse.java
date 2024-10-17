@@ -6,13 +6,13 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class CommetResponse {
+public class CommentResponse {
     private Long id;
     private Long boardId;
     private String commentWriter;
     private String commentContent;
 
-    public CommetResponse(Comment comment) {
+    public CommentResponse(Comment comment) {
         this.id = comment.getId();
         this.boardId = comment.getBoard().getId();
         this.commentWriter =  comment.getCommentWriter();

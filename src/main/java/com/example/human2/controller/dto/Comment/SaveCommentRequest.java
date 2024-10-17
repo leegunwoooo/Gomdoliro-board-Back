@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class SaveCommentRequest {
+    private Long boardId;
     private String commentContent;
     private String commentWriter;
 }
