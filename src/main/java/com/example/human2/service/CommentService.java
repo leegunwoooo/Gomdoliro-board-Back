@@ -8,6 +8,7 @@ import com.example.human2.domain.BoardRepository;
 import com.example.human2.domain.Comment;
 import com.example.human2.controller.dto.Comment.CommentResponse;
 import com.example.human2.domain.CommentRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,7 @@ public class CommentService {
         return new CommentResponse(save);
     }
 
+    @Transactional
     public CommentResponse updateComment(UpdateCommentRequest request) {
          Comment comment = commentRepository.findById(request.getId())
                  .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 댓글입니다."));
@@ -43,5 +45,9 @@ public class CommentService {
         comment.update(request.getCommentContent());
 
         return new CommentResponse(comment);
+    }
+
+    public void deleteComment(Long id) {
+        commentRepository.deleteById(id);
     }
 }
