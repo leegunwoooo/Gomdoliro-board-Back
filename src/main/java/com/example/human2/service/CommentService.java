@@ -34,9 +34,9 @@ public class CommentService {
     }
 
     @Transactional
-    public CommentResponse updateComment(Long commentsId, UpdateCommentRequest request) {
-        Comment comment = commentRepository.findById(commentsId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 댓글입니다."));
+    public CommentResponse updateComment(UpdateCommentRequest request) {
+         Comment comment = commentRepository.findById(request.getId())
+                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 댓글입니다."));
 
         if (!comment.getCommentWriter().equals(request.getCommentWriter())) {
             throw new IllegalArgumentException("본인만 댓글을 수정할 수 있습니다.");
