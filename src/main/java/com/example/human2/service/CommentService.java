@@ -38,11 +38,12 @@ public class CommentService {
         Comment comment = commentRepository.findById(commentsId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 댓글입니다."));
 
+        // 작성자만 수정 가능하도록 처리
         if (!comment.getCommentWriter().equals(request.getCommentWriter())) {
             throw new IllegalArgumentException("본인만 댓글을 수정할 수 있습니다.");
         }
 
-        comment.update(request.getCommentContent());
+        comment.update(request.getCommentContent()); // 댓글 내용 업데이트
 
         return new CommentResponse(comment);
     }
