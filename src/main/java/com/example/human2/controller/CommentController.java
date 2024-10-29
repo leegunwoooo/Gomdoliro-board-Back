@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/board/{boardId}/comments")
@@ -32,5 +34,11 @@ public class CommentController {
     public void deleteComment(@PathVariable Long commentsId) {
         commentService.deleteComment(commentsId);
     }
+
+    @GetMapping("/all")
+    public List<CommentResponse> getAllComments(@PathVariable Long boardId) {
+        return commentService.findAllComments(boardId);
+    }
+
 }
 

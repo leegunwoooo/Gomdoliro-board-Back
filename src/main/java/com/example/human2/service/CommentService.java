@@ -12,6 +12,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CommentService {
@@ -52,4 +54,11 @@ public class CommentService {
     public void deleteComment(Long id) {
         commentRepository.deleteById(id);
     }
+
+    public List<CommentResponse> findAllComments(Long boardId) {
+        return commentRepository.findByBoardId(boardId).stream()
+                .map(CommentResponse::new)
+                .toList();
+    }
+
 }
