@@ -20,7 +20,7 @@ public class Comment {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_id")  // 외래 키로 게시물(Board)와 연결
+    @JoinColumn(name = "board_id")  // 외래 키로 board와 연결
     private Board board;
 
     private String commentWriter;
