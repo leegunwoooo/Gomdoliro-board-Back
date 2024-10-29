@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @Getter
@@ -24,6 +27,10 @@ public class Comment {
 
     @Column(length = 1000)
     private String commentContent;
+
+    @CreatedDate//엔티티가 생성될 때 자동으로 생성시간을 기록하는 어노테이션
+    @Column(updatable = false)//한번 올라가면 수정안되게
+    private LocalDate commentDate; //LocalDate를 이용해 날짜를 저장
 
     @Builder
     public Comment(Board board, String commentWriter, String commentContent) {
