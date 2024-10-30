@@ -1,6 +1,6 @@
 package com.example.human2.controller.dto.Board;
 
-import com.example.human2.domain.Board;
+import com.example.human2.domain.Board.Board;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

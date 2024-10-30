@@ -1,13 +1,12 @@
 package com.example.human2.service;
 
-import com.example.human2.controller.dto.Board.BoardResponse;
 import com.example.human2.controller.dto.Comment.SaveCommentRequest;
 import com.example.human2.controller.dto.Comment.UpdateCommentRequest;
-import com.example.human2.domain.Board;
-import com.example.human2.domain.BoardRepository;
-import com.example.human2.domain.Comment;
+import com.example.human2.domain.Board.Board;
+import com.example.human2.domain.Board.BoardRepository;
+import com.example.human2.domain.Comment.Comment;
 import com.example.human2.controller.dto.Comment.CommentResponse;
-import com.example.human2.domain.CommentRepository;
+import com.example.human2.domain.Comment.CommentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

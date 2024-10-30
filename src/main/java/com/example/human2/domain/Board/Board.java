@@ -1,4 +1,4 @@
-package com.example.human2.domain;
+package com.example.human2.domain.Board;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -8,7 +8,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @Getter

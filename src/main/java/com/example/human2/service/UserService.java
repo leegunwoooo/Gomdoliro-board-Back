@@ -1,8 +1,8 @@
 package com.example.human2.service;
 
 import com.example.human2.controller.dto.User.UserDto;
-import com.example.human2.domain.User;
-import com.example.human2.domain.UserRepository;
+import com.example.human2.domain.User.User;
+import com.example.human2.domain.User.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

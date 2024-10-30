@@ -1,4 +1,4 @@
-package com.example.human2.domain;
+package com.example.human2.domain.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

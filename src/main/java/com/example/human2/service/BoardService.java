@@ -3,12 +3,12 @@ package com.example.human2.service;
 import com.example.human2.controller.dto.Board.BoardResponse;
 import com.example.human2.controller.dto.Board.SaveBoardRequest;
 import com.example.human2.controller.dto.Board.UpdateBoardRequest;
-import com.example.human2.domain.Board;
-import com.example.human2.domain.BoardRepository;
+import com.example.human2.domain.Board.Board;
+import com.example.human2.domain.Board.BoardRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.example.human2.domain.UserRepository;
+import com.example.human2.domain.User.UserRepository;
 
 
 import java.util.List;

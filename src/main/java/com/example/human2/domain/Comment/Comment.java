@@ -1,5 +1,6 @@
-package com.example.human2.domain;
+package com.example.human2.domain.Comment;
 
+import com.example.human2.domain.Board.Board;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;

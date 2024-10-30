@@ -1,6 +1,6 @@
 package com.example.human2.controller.dto.Comment;
 
-import com.example.human2.domain.Comment;
+import com.example.human2.domain.Comment.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
