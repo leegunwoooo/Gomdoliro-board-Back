@@ -54,6 +54,9 @@ public class CommentService {
         commentRepository.deleteById(id);
     }
 
+    public void deleteByBoardId(Long boardId) {
+        commentRepository.deleteByBoardId(boardId); // 이 메소드는 CommentRepository에 정의되어 있어야 합니다.
+    }
     public List<CommentResponse> findAllComments(Long boardId) {
         return commentRepository.findByBoardId(boardId).stream()
                 .map(CommentResponse::new)

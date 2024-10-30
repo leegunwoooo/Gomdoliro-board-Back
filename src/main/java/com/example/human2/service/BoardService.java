@@ -19,6 +19,7 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
     private final UserRepository userRepository;
+    private final CommentService commentService;
 
 
     public BoardResponse save(SaveBoardRequest request) {
@@ -59,6 +60,9 @@ public class BoardService {
     public void delete(Long id) {
         Board board = boardRepository.findById(id)
                         .orElseThrow(() -> new IllegalArgumentException("Board not found"));
+        commentService.deleteByBoardId(id);
+
         boardRepository.deleteById(id);
+
     }
 }
