@@ -10,13 +10,13 @@ public class ReCommentResponse {
     private Long id;
     private String reCommentContent;
     private Long commentId;
-    private String writer;
+    private String reCommentWriter;
 
     public ReCommentResponse(ReComment reComment) {
         this.id = reComment.getId();
         this.commentId = reComment.getComment().getId();
         this.reCommentContent = reComment.getReCommentContent();
-        this.writer = reComment.getWriter();
+        this.reCommentWriter = reComment.getReCommentWriter();
 
     }
 }
