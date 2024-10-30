@@ -57,6 +57,8 @@ public class BoardService {
     }
 
     public void delete(Long id) {
+        Board board = boardRepository.findById(id)
+                        .orElseThrow(() -> new IllegalArgumentException("Board not found"));
         boardRepository.deleteById(id);
     }
 }
