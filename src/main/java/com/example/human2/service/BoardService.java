@@ -56,6 +56,7 @@ public class BoardService {
 
         return new BoardResponse(board);
     }
+
     @Transactional
     public void delete(Long id) {
         Board board = boardRepository.findById(id)

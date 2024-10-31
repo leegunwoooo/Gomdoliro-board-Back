@@ -2,12 +2,16 @@ package com.example.human2.service;
 
 import com.example.human2.controller.dto.ReComment.ReCommentResponse;
 import com.example.human2.controller.dto.ReComment.SaveReCommentRequest;
+import com.example.human2.controller.dto.ReComment.UpdateReCommentRequest;
 import com.example.human2.domain.Comment.Comment;
 import com.example.human2.domain.Comment.CommentRepository;
 import com.example.human2.domain.ReComment.ReComment;
 import com.example.human2.domain.ReComment.ReCommentRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +33,31 @@ public class ReCommentService {
 
         return new ReCommentResponse(save);
 
+    }
+
+    @Transactional
+    public ReCommentResponse update(Long recommentsid, UpdateReCommentRequest request) {
+        ReComment reComment = reCommentRepository.findById(recommentsid)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 대댓글입니다"));
+
+        if (!reComment.getReCommentWriter().equals(request.getWriter())) {
+            throw new IllegalArgumentException("본인만 대댓글을 수정할 수 있습니다.");
+        }
+
+        reComment.update(request.getContent());
+
+        return new ReCommentResponse(reComment);
+    }
+
+    @Transactional
+    public void delete(Long id){
+        reCommentRepository.deleteById(id);
+    }
+
+    public List<ReCommentResponse> findRecomments(Long commentsId){
+        return reCommentRepository.findByCommentId(commentsId).stream()
+                .map(ReCommentResponse::new)
+                .toList();
     }
 
 }

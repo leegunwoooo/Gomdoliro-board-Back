@@ -32,4 +32,8 @@ public class ReComment {
         this.reCommentContent = reCommentContent;
         this.reCommentWriter = reCommentWriter;
     }
+
+    public void update(String reCommentContent){
+        this.reCommentContent = reCommentContent;
+    }
 }
