@@ -25,8 +25,8 @@ public class ReCommentService {
 
         ReComment reComment = ReComment.builder()
                 .comment(comment)
-                .reCommentContent(request.getReCommentcontent())
-                .reCommentWriter(request.getReCommentwriter())
+                .reCommentContent(request.getReCommentContent())
+                .reCommentWriter(request.getReCommentWriter())
                 .build();
 
         ReComment save = reCommentRepository.save(reComment);
@@ -40,11 +40,11 @@ public class ReCommentService {
         ReComment reComment = reCommentRepository.findById(recommentsid)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 대댓글입니다"));
 
-        if (!reComment.getReCommentWriter().equals(request.getWriter())) {
+        if (!reComment.getReCommentWriter().equals(request.getReCommentWriter())) {
             throw new IllegalArgumentException("본인만 대댓글을 수정할 수 있습니다.");
         }
 
-        reComment.update(request.getContent());
+        reComment.update(request.getReCommentContent());
 
         return new ReCommentResponse(reComment);
     }

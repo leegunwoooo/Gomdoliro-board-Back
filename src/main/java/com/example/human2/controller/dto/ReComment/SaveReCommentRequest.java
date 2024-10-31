@@ -9,6 +9,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class SaveReCommentRequest {
     private Long commentId;
-    private String reCommentcontent;
-    private String reCommentwriter;
+    private String reCommentContent;
+    private String reCommentWriter;
 }

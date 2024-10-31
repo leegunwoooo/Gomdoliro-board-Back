@@ -6,6 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class UpdateReCommentRequest {
-    private String content;
-    private String writer;
+    private String reCommentContent;
+    private String reCommentWriter;
 }
