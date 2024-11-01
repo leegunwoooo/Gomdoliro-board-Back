@@ -69,4 +69,35 @@ public class UserController {
             return ResponseEntity.status(401).body(response);
         }
     }
+
+
+    @PostMapping("/send-code")
+    public ResponseEntity<String> sendVerificationCode(@RequestBody Map<String, String> request) {
+        String email = request.get("email");
+        try {
+            userService.sendVerificationCode(email);
+            return ResponseEntity.ok("인증 코드가 전송되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("이메일 전송 실패");
+        }
+    }
+
+    @PostMapping("/verify-code")
+    public ResponseEntity<String> verifyCode(@RequestBody Map<String, String> request) {
+        String email = request.get("email");
+        String code = request.get("code");
+        if (userService.verifyCode(email, code)) {
+            return ResponseEntity.ok("인증 성공");
+        } else {
+            return ResponseEntity.status(400).body("인증 실패");
+        }
+    }
+
+    @PatchMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody Map<String, String> request) {
+        String email = request.get("email");
+        String newPassword = request.get("newPassword");
+        userService.resetPassword(email, newPassword);
+        return ResponseEntity.ok("비밀번호가 재설정되었습니다.");
+    }
 }
