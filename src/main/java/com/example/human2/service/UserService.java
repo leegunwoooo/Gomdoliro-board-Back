@@ -64,7 +64,8 @@ public class UserService implements UserDetailsService {
     }
 
     public void resetPassword(String email, String newPassword) {
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 이메일입니다."));
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 이메일입니다."));
         user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
     }

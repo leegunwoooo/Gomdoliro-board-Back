@@ -93,11 +93,16 @@ public class UserController {
         }
     }
 
-    @PatchMapping("/reset-password")
-    public ResponseEntity<String> resetPassword(@RequestBody Map<String, String> request) {
+    @PostMapping("/reset-password")
+    public ResponseEntity<Map<String, String>> resetPassword(@RequestBody Map<String, String> request) {
         String email = request.get("email");
         String newPassword = request.get("newPassword");
+
         userService.resetPassword(email, newPassword);
-        return ResponseEntity.ok("비밀번호가 재설정되었습니다.");
+        Map<String, String> response = new HashMap<>();
+        response.put("success", "1");
+
+        return ResponseEntity.ok(response);
     }
+
 }
