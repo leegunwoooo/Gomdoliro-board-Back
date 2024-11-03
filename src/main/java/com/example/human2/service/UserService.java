@@ -3,6 +3,7 @@ package com.example.human2.service;
 import com.example.human2.controller.dto.User.UserDto;
 import com.example.human2.domain.User.User;
 import com.example.human2.domain.User.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -44,6 +45,7 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user).getId();
     }
 
+    @Transactional
     public void updateName(String email, String nickname) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("회원 정보를 찾을 수 없습니다."));
@@ -63,6 +65,7 @@ public class UserService implements UserDetailsService {
         return code.equals(verificationCodes.get(email));
     }
 
+    @Transactional
     public void resetPassword(String email, String newPassword) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 이메일입니다."));
