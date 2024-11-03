@@ -56,7 +56,6 @@ public class UserController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             User user = (User) authentication.getPrincipal();
-
             // 로그인 성공 시 JSON 응답
             Map<String, String> response = new HashMap<>();
             response.put("success", "1");  // 필드명을 "success"로 변경

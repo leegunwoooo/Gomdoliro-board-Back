@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,6 +13,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @Getter
 @Entity
+@Setter
 @Table(name = "Users")
 public class User implements UserDetails {
     @Id
@@ -39,7 +41,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null; // 권한을 따로 관리하지 않는 경우 null 또는 빈 리스트 반환
+        return null;
     }
 
     @Builder
