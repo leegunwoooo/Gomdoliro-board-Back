@@ -12,7 +12,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MariaDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
 
 logging:
@@ -21,3 +21,15 @@ logging:
       hibernate:
         SQL: debug
         type: trace
+
+mail:
+  host: smtp.gmail.com
+  port: 587
+  username: ${USER}
+  password: ${PASSWORD}
+  properties:
+    mail:
+      smtp:
+        auth: true
+        starttls:
+          enable: true

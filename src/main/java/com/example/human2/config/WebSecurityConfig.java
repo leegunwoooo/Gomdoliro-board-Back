@@ -23,6 +23,7 @@ import java.util.List;
 @Configuration
 public class WebSecurityConfig {
 
+    private final UserService userService;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -56,12 +57,8 @@ public class WebSecurityConfig {
     public AuthenticationManager authenticationManager(HttpSecurity http, PasswordEncoder passwordEncoder) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.userDetailsService(userService()).passwordEncoder(passwordEncoder);
+        authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(passwordEncoder); // userService() 대신 userService 사용
         return authenticationManagerBuilder.build();
     }
 
-    @Bean
-    public UserService userService() {
-        return new UserService();
-    }
 }
