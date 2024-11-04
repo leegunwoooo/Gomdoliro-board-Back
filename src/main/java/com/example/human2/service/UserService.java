@@ -50,7 +50,7 @@ public class UserService implements UserDetailsService {
 
     public void updatePasswordByEmail(String email, String newPassword) {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("회원 정보를 찾을 수 없습니다."));
+                .orElseThrow(() -> new UsernameNotFoundException("존재하지 않는 닉네임입니다"));
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(newPassword)); // 새 비밀번호 암호화 및 저장
