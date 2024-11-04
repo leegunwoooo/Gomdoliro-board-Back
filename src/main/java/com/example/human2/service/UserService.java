@@ -47,4 +47,13 @@ public class UserService implements UserDetailsService {
         user.setNickname(nickname); // 닉네임 설정
         userRepository.save(user); // 저장
     }
+
+    public void updatePasswordByEmail(String email, String newPassword) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("회원 정보를 찾을 수 없습니다."));
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(newPassword)); // 새 비밀번호 암호화 및 저장
+        userRepository.save(user);
+    }
 }
