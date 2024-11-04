@@ -64,7 +64,7 @@ public class UserController {
         } catch (Exception e) {
             // 인증 실패 시 401 상태 코드와 함께 실패 메시지 반환
             Map<String, String> response = new HashMap<>();
-            response.put("success", "0");  // 실패 시 "success"를 "0"으로
+            response.put("success", "0");
             return ResponseEntity.status(401).body(response);
         }
     }
