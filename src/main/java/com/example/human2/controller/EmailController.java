@@ -45,7 +45,7 @@ public class EmailController {
     }
 
     // 비밀번호 변경 요청
-    @PostMapping("/changePw")
+    @PatchMapping("/changePw")
     public ResponseEntity<Map<String, String>> changePassword(@RequestBody Map<String, String> request) {
         String email = request.get("email");
         String newPassword = request.get("newPassword");
