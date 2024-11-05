@@ -28,19 +28,18 @@ public class EmailController {
         return ResponseEntity.ok(response);
     }
 
-    // 인증번호 확인 요청
     @PostMapping("/verifyCode")
     public ResponseEntity<Map<String, String>> verifyCode(@RequestBody Map<String, String> request) {
         String email = request.get("email");
         String code = request.get("code");
 
         Map<String, String> response = new HashMap<>();
-        if (emailService.verifyCode(email, code)) { // 인증번호 확인
+        if (emailService.verifyCode(email, code)) {
             response.put("success", "1");
             return ResponseEntity.ok(response);
         } else {
             response.put("success", "0");
-            response.put("message", "Invalid verification code.");
+            response.put("message", "잘못된 코드입니다.");
             return ResponseEntity.status(401).body(response);
         }
     }

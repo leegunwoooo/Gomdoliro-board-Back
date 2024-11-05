@@ -22,7 +22,7 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
-    private final AuthenticationManager authenticationManager; // AuthenticationManager 주입
+    private final AuthenticationManager authenticationManager;
 
     @PostMapping("/signup")
     public ResponseEntity<Map<String, String>> signup(@RequestBody UserDto infoDto) { // 회원 추가
