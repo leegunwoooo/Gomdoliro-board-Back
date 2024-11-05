@@ -4,9 +4,6 @@ spring:
     url: ${DB_URL}
     username: ${DB_NAME}
     password: ${DB_PASSWORD}
-
-
-
   jpa:
     properties:
       hibernate:
@@ -15,12 +12,12 @@ spring:
       ddl-auto: update
     show-sql: true
 
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: debug
-        type: trace
+  logging:
+    level:
+      org:
+        hibernate:
+          SQL: debug
+          type: trace
 
   mail:
     host: smtp.gmail.com
