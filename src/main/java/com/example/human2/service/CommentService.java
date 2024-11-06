@@ -50,7 +50,7 @@ public class CommentService {
         return new CommentResponse(comment);
     }
 
-
+    @Transactional
     public void deleteComment(Long id) {
         Comment comment = commentRepository.findById(id)
                         .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 댓글입니다"));
