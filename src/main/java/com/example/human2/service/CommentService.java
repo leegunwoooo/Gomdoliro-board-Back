@@ -18,6 +18,7 @@ import java.util.List;
 public class CommentService {
     private final CommentRepository commentRepository;
     private final BoardRepository boardRepository;
+    private final ReCommentService reCommentService;
 
     public CommentResponse saveComment(SaveCommentRequest request) {
         Board board = boardRepository.findById(request.getBoardId())
@@ -51,12 +52,26 @@ public class CommentService {
 
 
     public void deleteComment(Long id) {
+        Comment comment = commentRepository.findById(id)
+                        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 댓글입니다"));
+        reCommentService.deleteByCommentId(id);
         commentRepository.deleteById(id);
     }
+
+    /*@Transactional
+    public void delete(Long id) {
+        Board board = boardRepository.findById(id)
+                        .orElseThrow(() -> new IllegalArgumentException("Board not found"));
+        commentService.deleteByBoardId(id);
+
+        boardRepository.deleteById(id);
+
+    }*/
 
     public void deleteByBoardId(Long boardId) {
         commentRepository.deleteByBoardId(boardId);
     }
+
     public List<CommentResponse> findAllComments(Long boardId) {
         return commentRepository.findByBoardId(boardId).stream()
                 .map(CommentResponse::new)

@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface ReCommentRepository extends JpaRepository<ReComment, Long> {
     List<ReComment> findByCommentId(Long commentId);
+    void deleteByCommentId(Long commentId);
 }

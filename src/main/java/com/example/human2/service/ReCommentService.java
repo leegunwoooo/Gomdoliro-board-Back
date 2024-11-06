@@ -54,6 +54,14 @@ public class ReCommentService {
         reCommentRepository.deleteById(id);
     }
 
+    public void deleteByCommentId(Long commentId){
+        reCommentRepository.deleteByCommentId(commentId);
+    }
+    /*
+    public void deleteByBoardId(Long boardId) {
+        commentRepository.deleteByBoardId(boardId);
+    }*/
+
     public List<ReCommentResponse> findRecomments(Long commentsId){
         return reCommentRepository.findByCommentId(commentsId).stream()
                 .map(ReCommentResponse::new)
