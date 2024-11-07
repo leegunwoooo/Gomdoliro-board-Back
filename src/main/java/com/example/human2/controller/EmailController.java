@@ -17,7 +17,6 @@ public class EmailController {
     private final EmailService emailService;
     private final UserService userService;
 
-    // 인증번호 전송 요청
     @PostMapping("/sendCode")
     public ResponseEntity<Map<String, String>> sendVerificationCode(@RequestBody Map<String, String> request) {
         String email = request.get("email");

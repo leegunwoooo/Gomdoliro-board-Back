@@ -15,6 +15,7 @@ public class CommentResponse {
     private String commentContent;
     private LocalDate commentDate;
 
+
     public CommentResponse(Comment comment) {
         this.id = comment.getId();
         this.boardId = comment.getBoard().getId();
