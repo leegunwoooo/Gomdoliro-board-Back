@@ -49,7 +49,7 @@ public class EmailController {
         String email = request.get("email");
         String newPassword = request.get("newPassword");
 
-        userService.updatePasswordByEmail(email, newPassword); // 비밀번호 변경
+        userService.updatePasswordByEmail(email, newPassword);
 
         Map<String, String> response = new HashMap<>();
         response.put("success", "1");
