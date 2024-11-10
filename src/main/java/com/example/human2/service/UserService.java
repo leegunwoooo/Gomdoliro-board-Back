@@ -27,15 +27,14 @@ public class UserService implements UserDetailsService {
         }
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodedPassword = encoder.encode(userDto.getPassword()); // 암호화된 비밀번호 저장
+        String encodedPassword = encoder.encode(userDto.getPassword());
 
-        // 빌더 패턴을 사용하여 User 객체 생성
         User user = User.builder()
                 .email(userDto.getEmail())
-                .password(encodedPassword) // 암호화된 비밀번호 사용
+                .password(encodedPassword)
                 .build();
 
-        return userRepository.save(user).getId(); // 저장된 사용자 정보의 Id 반환
+        return userRepository.save(user).getId();
     }
 
     public void updateName(String email, String nickname) {
@@ -44,8 +43,8 @@ public class UserService implements UserDetailsService {
         if(userRepository.findByNickName(nickname).isPresent()) {
             throw new IllegalArgumentException("이미 존재하는 닉네임입니다.");
         }
-        user.setNickname(nickname); // 닉네임 설정
-        userRepository.save(user); // 저장
+        user.setNickname(nickname);
+        userRepository.save(user);
     }
 
     public void updatePasswordByEmail(String email, String newPassword) {
@@ -53,7 +52,7 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("존재하지 않는 닉네임입니다"));
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(newPassword)); // 새 비밀번호 암호화 및 저장
+        user.setPassword(encoder.encode(newPassword));
         userRepository.save(user);
     }
 }
