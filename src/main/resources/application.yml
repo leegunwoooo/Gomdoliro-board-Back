@@ -5,6 +5,7 @@ spring:
     username: ${DB_NAME}
     password: ${DB_PASSWORD}
   jpa:
+
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MariaDBDialect
@@ -30,4 +31,11 @@ spring:
           auth: true
           starttls:
             enable: true
+
+  security:
+    jwt:
+      header : Authorization
+      secret : ${JWT_TOKEN}
+      token-validity-in-seconds : 86400
+
 
