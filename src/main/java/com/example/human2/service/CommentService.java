@@ -52,8 +52,6 @@ public class CommentService {
 
     @Transactional
     public void deleteComment(Long id) {
-        Comment comment = commentRepository.findById(id)
-                        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 댓글입니다"));
         reCommentService.deleteByCommentId(id);
         commentRepository.deleteById(id);
     }
