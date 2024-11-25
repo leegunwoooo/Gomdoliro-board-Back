@@ -58,15 +58,6 @@ public class CommentService {
         commentRepository.deleteById(id);
     }
 
-    /*@Transactional
-    public void delete(Long id) {
-        Board board = boardRepository.findById(id)
-                        .orElseThrow(() -> new IllegalArgumentException("Board not found"));
-        commentService.deleteByBoardId(id);
-
-        boardRepository.deleteById(id);
-
-    }*/
 
     public void deleteByBoardId(Long boardId) {
         commentRepository.deleteByBoardId(boardId);
