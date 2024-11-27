@@ -43,15 +43,22 @@ public class BoardService {
     }
 
     public BoardResponse findOne(Long id) {
+        log.info("{}번 게시물", id);
         Board board = boardRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Board not found"));
+                .orElseThrow(() -> {
+                    log.error("{}번 게시물은 없습니다", id);
+                    return new IllegalArgumentException("Board not found");
+                });
         return new BoardResponse(board);
     }
 
     @Transactional
     public BoardResponse update(UpdateBoardRequest request) {
         Board board = boardRepository.findById(request.getId())
-                .orElseThrow(() -> new IllegalArgumentException("Board not found"));
+                .orElseThrow(() ->{
+                    log.error("{}번 게시물은 없습니다.", request.getId());
+                    return new IllegalArgumentException("Board not found");
+                });
 
         board.update(request.getTitle(), request.getContent());
 
@@ -61,8 +68,10 @@ public class BoardService {
     @Transactional
     public void delete(Long id) {
         boardRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Board not found"));
-        commentService.deleteByBoardId(id);
+                .orElseThrow(() ->{
+                    log.error("{}번 게시물은 없습니다.", id);
+                    return new IllegalArgumentException("Board not found");
+                });
 
         boardRepository.deleteById(id);
 
