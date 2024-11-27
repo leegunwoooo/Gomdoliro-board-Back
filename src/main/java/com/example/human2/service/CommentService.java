@@ -25,7 +25,7 @@ public class CommentService {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시물입니다."));
 
         Comment comment = Comment.builder()
-                .board(board)  // 조회한 Board 객체를 할당
+                .board(board)
                 .commentContent(request.getCommentContent())
                 .commentWriter(request.getCommentWriter())
                 .build();

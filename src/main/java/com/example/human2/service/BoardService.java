@@ -7,23 +7,24 @@ import com.example.human2.domain.Board.Board;
 import com.example.human2.domain.Board.BoardRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import com.example.human2.domain.User.UserRepository;
 
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class BoardService {
 
     private final BoardRepository boardRepository;
-    private final UserRepository userRepository;
     private final CommentService commentService;
 
 
     public BoardResponse save(SaveBoardRequest request) {
 
+        log.info("새로운 게시물 정보: 제목={}, 작성자={}", request.getTitle(), request.getWriter());
         Board board = Board.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
@@ -59,8 +60,8 @@ public class BoardService {
 
     @Transactional
     public void delete(Long id) {
-        Board board = boardRepository.findById(id)
-                        .orElseThrow(() -> new IllegalArgumentException("Board not found"));
+        boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Board not found"));
         commentService.deleteByBoardId(id);
 
         boardRepository.deleteById(id);
