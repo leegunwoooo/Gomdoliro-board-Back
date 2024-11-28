@@ -28,7 +28,6 @@ public class UserController {
     public ResponseEntity<Map<String, String>> signup(@RequestBody UserDto infoDto) { // 회원 추가
         userService.save(infoDto);
         Map<String, String> response = new HashMap<>();
-        response.put("success", "1");  // 필드명을 "success"로 변경
         return ResponseEntity.ok(response);
     }
 
@@ -38,7 +37,6 @@ public class UserController {
         String nickname = request.get("nickName"); // 요청에서 닉네임 추출
         userService.updateName(email, nickname); // 닉네임 저장
         Map<String, String> response = new HashMap<>();
-        response.put("success", "1");
         return ResponseEntity.ok(response);
     }
 
@@ -58,7 +56,6 @@ public class UserController {
             User user = (User) authentication.getPrincipal();
             // 로그인 성공 시 JSON 응답
             Map<String, String> response = new HashMap<>();
-            response.put("success", "1");  // 필드명을 "success"로 변경
             response.put("nickname", user.getUsername());
             return ResponseEntity.ok(response);
         } catch (Exception e) {
