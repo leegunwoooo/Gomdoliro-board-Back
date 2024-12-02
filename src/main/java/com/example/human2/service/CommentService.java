@@ -56,11 +56,6 @@ public class CommentService {
         commentRepository.deleteById(id);
     }
 
-
-    public void deleteByBoardId(Long boardId) {
-        commentRepository.deleteByBoardId(boardId);
-    }
-
     public List<CommentResponse> findAllComments(Long boardId) {
         return commentRepository.findByBoardId(boardId).stream()
                 .map(CommentResponse::new)
