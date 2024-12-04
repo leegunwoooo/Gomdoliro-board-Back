@@ -12,6 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -31,28 +32,24 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                // token을 사용하는 방식이기 때문에 csrf를 disable합니다.
-                .csrf().disable()
+                .cors(cors -> cors.disable())  // CORS 비활성화
+                .csrf(csrf -> csrf.disable())  // CSRF 비활성화
 
-                .exceptionHandling()
-                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
-                .accessDeniedHandler(jwtAccessDeniedHandler)
+                .exceptionHandling(exception -> exception  // 예외 처리 설정
+                        .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                        .accessDeniedHandler(jwtAccessDeniedHandler)
+                )
 
-                // 세션을 사용하지 않기 때문에 STATELESS로 설정
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionManagement(session -> session  // 세션 관리 설정
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
 
-                .and()
-                .authorizeHttpRequests() // HttpServletRequest를 사용하는 요청들에 대한 접근제한을 설정하겠다.
-                .requestMatchers("/api/authenticate").permitAll() // 로그인 api
-                .requestMatchers("/api/signup").permitAll() // 회원가입 api
-                .requestMatchers(PathRequest.toH2Console()).permitAll()// h2-console, favicon.ico 요청 인증 무시
-                .requestMatchers("/favicon.ico").permitAll()
-                .anyRequest().authenticated() // 그 외 인증 없이 접근X
+                .authorizeHttpRequests(auth -> auth  // 권한 설정
+                        .requestMatchers("/signup").permitAll()  // 회원가입 API
+                        .anyRequest().authenticated()  // 그 외의 요청은 인증 필요
+                );
 
-                .and()
-                .apply(new JwtSecurityConfig(tokenProider)); // JwtFilter를 addFilterBefore로 등록했던 JwtSecurityConfig class 적용
+        httpSecurity.addFilterBefore(new JwtFilter(tokenProider), UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
     }
