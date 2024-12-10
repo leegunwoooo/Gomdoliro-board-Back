@@ -57,10 +57,6 @@ public class ReCommentService {
     public void deleteByCommentId(Long commentId){
         reCommentRepository.deleteByCommentId(commentId);
     }
-    /*
-    public void deleteByBoardId(Long boardId) {
-        commentRepository.deleteByBoardId(boardId);
-    }*/
 
     public List<ReCommentResponse> findRecomments(Long commentsId){
         return reCommentRepository.findByCommentId(commentsId).stream()

@@ -19,8 +19,6 @@ import java.util.List;
 public class BoardService {
 
     private final BoardRepository boardRepository;
-    private final CommentService commentService;
-
 
     public BoardResponse save(SaveBoardRequest request) {
 
@@ -69,7 +67,7 @@ public class BoardService {
     public void delete(Long id) {
         boardRepository.findById(id)
                 .orElseThrow(() ->{
-                    log.error("{}번 게시물은 없습니다.", id);
+                    log.error("{}번 게시물은 없습니다..", id);
                     return new IllegalArgumentException("Board not found");
                 });
 

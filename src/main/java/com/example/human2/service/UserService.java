@@ -20,7 +20,7 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(email));
     }
 
-    public Long save(UserDto userDto) {
+    public void save(UserDto userDto) {
 
         if (userRepository.findByEmail(userDto.getEmail()).isPresent()) {
             throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
@@ -34,7 +34,7 @@ public class UserService implements UserDetailsService {
                 .password(encodedPassword)
                 .build();
 
-        return userRepository.save(user).getId();
+        userRepository.save(user);
     }
 
     public void updateName(String email, String nickname) {
