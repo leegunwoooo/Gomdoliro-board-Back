@@ -2,8 +2,8 @@ package com.example.human2.config;
 
 import com.example.human2.jwt.JwtAccessDeniedHandler;
 import com.example.human2.jwt.JwtAuthenticationEntryPoint;
+import com.example.human2.jwt.JwtFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 
-    private final TokenProider tokenProider;
+    private final TokenProvider tokenProvider;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
@@ -49,7 +49,7 @@ public class WebSecurityConfig {
                         .anyRequest().authenticated()  // 그 외의 요청은 인증 필요
                 );
 
-        httpSecurity.addFilterBefore(new JwtFilter(tokenProider), UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(new JwtFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
     }

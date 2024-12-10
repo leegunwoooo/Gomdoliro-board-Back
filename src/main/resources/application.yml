@@ -5,7 +5,6 @@ spring:
     username: ${DB_NAME}
     password: ${DB_PASSWORD}
   jpa:
-
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MariaDBDialect
